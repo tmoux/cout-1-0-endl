@@ -1,0 +1,118 @@
+\documentclass[9pt, a4paper, notitlepage]{extreport}
+\usepackage{kactlpkg}
+\kactlcontentdir{content}
+
+\university{Swarthmore}{Swarthmore College}{Swarthmore}
+\team{\texttt{cout << 1/0 << endl;}}{Jay Leeds, Runze Wang, Timothy Mou}
+\contest{ICPC World Finals Dhaka}{Nov. 10, 2022}
+% \contest{\ }{\today}
+\enablecolors
+
+\begin{document}
+\maketeampage
+% Small KACTL header on the first page:
+% \maketitle{``One Last Time'' Edition}{\today}
+\begin{multicols*}{3}
+  \thispagestyle{fancy}
+  % Table of contents, without subsections:
+  \setcounter{tocdepth}{0}
+  \tableofcontents
+  \chapter{Templates}
+  \kactlimport[-l cpp]{2sat.cpp}
+  \kactlimport[-l cpp]{3dHull.cpp}
+  \kactlimport[-l cpp]{AdvancedHash.cpp}
+  \kactlimport[-l cpp]{AhoCorasick.cpp}
+  \kactlimport[-l cpp]{Angle.cpp}
+  \kactlimport[-l cpp]{ArticulationPoints.cpp}
+  \kactlimport[-l cpp]{Basis.cpp}
+  \kactlimport[-l cpp]{Berlekamp-Massey.cpp}
+  \kactlimport[-l cpp]{BinSearchSegtree.cpp}
+  \kactlimport[-l cpp]{BipartiteMatching.cpp}
+  \kactlimport[-l cpp]{BipartiteMatchingWithWeights.cpp}
+  \kactlimport[-l cpp]{BIT.cpp}
+  \kactlimport[-l cpp]{Bridge.cpp}
+  \kactlimport[-l cpp]{CentroidDecomp.cpp}
+  \kactlimport[-l cpp]{ChordalGraph.cpp}
+  \kactlimport[-l cpp]{CircleIntersection.cpp}
+  \kactlimport[-l cpp]{CircleLine.cpp}
+  \kactlimport[-l cpp]{CirclePolygonIntersection.cpp}
+  \kactlimport[-l cpp]{CircleTangents.cpp}
+  \kactlimport[-l cpp]{Circumcircle.cpp}
+  \kactlimport[-l cpp]{ClosestPair.cpp}
+  \kactlimport[-l cpp]{ConvexHull.cpp}
+  \kactlimport[-l cpp]{ConvexHullTrick.cpp}
+  \kactlimport[-l cpp]{CRT.cpp}
+  \kactlimport[-l cpp]{Cutpoints.cpp}
+  \kactlimport[-l cpp]{DelaunayTriangulation.cpp}
+  \kactlimport[-l cpp]{DFSMatching.cpp}
+  \kactlimport[-l cpp]{Dinic.cpp}
+  \kactlimport[-l cpp]{DSU.cpp}
+  \kactlimport[-l cpp]{EulerPath.cpp}
+  \kactlimport[-l cpp]{FastDelaunay.cpp}
+  \kactlimport[-l cpp]{FastHashTable.cpp}
+  \kactlimport[-l cpp]{FFT.cpp}
+  \kactlimport[-l cpp]{GeneralMatching.cpp}
+  \kactlimport[-l cpp]{GeometrySnippets.cpp}
+  \kactlimport[-l cpp]{HalfPlaneIntersection.cpp}
+  \kactlimport[-l cpp]{HopcroftKarp.cpp}
+  \kactlimport[-l cpp]{HullDiameter.cpp}
+  \kactlimport[-l cpp]{InsidePolygon.cpp}
+  \kactlimport[-l cpp]{IntervalContainer.cpp}
+  \kactlimport[-l cpp]{KdTree.cpp}
+  \kactlimport[-l cpp]{KMP.cpp}
+  \kactlimport[-l cpp]{KnuthOptimization.cpp}
+  \kactlimport[-l cpp]{LazySegtree.cpp}
+  \kactlimport[-l cpp]{LCA.cpp}
+  \kactlimport[-l cpp]{LCT.cpp}
+  \kactlimport[-l cpp]{LeftistTree.cpp}
+  \kactlimport[-l cpp]{LinearProgramming.cpp}
+  \kactlimport[-l cpp]{LinearTransformation.cpp}
+  \kactlimport[-l cpp]{LineDistance.cpp}
+  \kactlimport[-l cpp]{LineHullIntersection.cpp}
+  \kactlimport[-l cpp]{LineContainer.cpp}
+  \kactlimport[-l cpp]{Manacher.cpp}
+  \kactlimport[-l cpp]{Matrix.cpp}
+  \kactlimport[-l cpp]{MinCostMaxFlow.cpp}
+  \kactlimport[-l cpp]{MinimumEnclosingCircle.cpp}
+  \kactlimport[-l cpp]{MinimumVertexCover.cpp}
+  \kactlimport[-l cpp]{MinkowskiSum.cpp}
+  \kactlimport[-l cpp]{Mo.cpp}
+  \kactlimport[-l cpp]{NTT.cpp}
+  \kactlimport[-l cpp]{orderedset.cpp}
+  \kactlimport[-l cpp]{PersistentSegtree.cpp}
+  \kactlimport[-l cpp]{Point3d.cpp}
+  \kactlimport[-l cpp]{Point.cpp}
+  \kactlimport[-l cpp]{PollardRho.cpp}
+  \kactlimport[-l cpp]{PolygonUnion.cpp}
+  \kactlimport[-l cpp]{Polynomial.cpp}
+  \kactlimport[-l cpp]{PushRelabel.cpp}
+  \kactlimport[-l cpp]{QuasiExgcdSum.cpp}
+  \kactlimport[-l cpp]{QuickPhiSum.cpp}
+  \kactlimport[-l cpp]{RootNonTree.cpp}
+  \kactlimport[-l cpp]{Sam.cpp}
+  \kactlimport[-l cpp]{SCC.cpp}
+  \kactlimport[-l cpp]{Schreier-Sims.cpp}
+  \kactlimport[-l cpp]{Segtree.cpp}
+  \kactlimport[-l cpp]{Sieve.cpp}
+  \kactlimport[-l cpp]{Simpson.cpp}
+  \kactlimport[-l cpp]{stress.cpp}
+  \kactlimport[-l cpp]{SuffixArray.cpp}
+  \kactlimport[-l cpp]{SuffixTree.cpp}
+  \kactlimport[-l cpp]{Template.cpp}
+  \kactlimport[-l cpp]{Treap.cpp}
+  \kactlimport[-l cpp]{validate.cpp}
+  \kactlimport[-l raw]{Vimrc.cpp}
+  \kactlimport[-l cpp]{Voronoi.cpp}
+  \kactlimport[-l cpp]{Z-algorithm.cpp}
+  \kactlimport[-l raw]   {hash.sh}
+
+  \chapter{Math Hints}
+  \import{mathhints.tex}
+
+
+\end{multicols*}
+
+
+\begin{multicols*}{3}
+\end{multicols*}
+\end{document}

@@ -1,0 +1,56 @@
+\emph{Newton's Method}: $x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$.
+
+\emph{Lagrange Multiplier}: Let $f: \mathbb{R}^n \rightarrow \mathbb{R}$ be the objective function, $g: \mathbb{R}^n \rightarrow \mathbb{R}^c$ be the constraints function, let $x^*$ be an optimal solution to the optimization problem such that $Dg(x^*) = c$: maximize $f(x)$ subject to $g(x) = 0$. There there exists $\lambda$ such that $Df(x^*) = \lambda^*\top Dg(x^*)$.
+
+\emph{Burnside's Lemma}: Let $G$ be a finite group acting on set $X$. Let $X^g$ denote the set of elements in $X$ that are fixed by $g$. Then the number of orbits is given by $|X/G| = \frac{1}{|G|}\sum_{g \in G}|X^g|$.
+
+\emph{Linear Time Inverses Modulo $p$}: For $i \geq 2$, $i^{-1} = -\lfloor \frac{p}{i} \rfloor (p \bmod i)^{-1}$.
+
+\emph{Quadratic Residue}: $\left(\frac{a}{p} \right) = a^{(p-1)/2}$. If $x^2 \equiv a (\bmod p)$ has a solution, then $\left(\frac{a}{p} \right) = 1$.
+
+\emph{LGV Lemma}: Assume $G$ is a DAG. Let $\omega(P)$ be the product of edge weights on path $P$. Let $e(u,v) := \sum_{P: u \rightarrow v} \omega(P)$ be the sum of $\omega(P)$ for all paths from $u$ to $v$. The set of sources $A$ is a subset of vertices of $G$ with size $n$. The set of sinks $B$ is also a subset of vertices of $G$ with size $n$. A collection of disjoint paths $A \rightarrow B$ consists of $n$ paths $S_i$ such that $S_i$ is a path from $A_i$ to $B_{\sigma(S)_i}$ such that for any $i \neq j$, $S_i$ and $S_j$ does not share a common vertex. Then if we let
+\begin{equation*}
+  M = \begin{bmatrix} e(A_1,B_1) & e(A_1,B_2) & \cdots & e(A_1,B_n) \\ e(A_2,B_1) & e(A_2,B_2) & \cdots & e(A_2,B_n) \\ \vdots & \vdots & \ddots & \vdots \\ e(A_n,B_1) & e(A_n,B_2) & \cdots & e(A_n,B_n) \end{bmatrix},
+\end{equation*}
+
+then
+\begin{equation*}
+  \det M = \sum_{S: A \rightarrow B}\text{ sgn } \sigma(S) \prod_{i=1}^n \omega(S_i).
+\end{equation*}
+
+Here, $S: A \rightarrow B$ denotes a set of disjoint paths $S$ from $A$ to $B$.
+
+\emph{Network Flow with Lower/Upper Bounds}: Suppose the flow must satisfy $b(u,v) \leq f(u,v) \leq c(u,v)$, and have conservation of flows over vertices.
+
+\textbf{Variant 1:} No source/sink (i.e. flow at all vertices must be balanced), check if there is a feasible flow: create a graph $G'$. For any edge $u \rightarrow v$, add an edge with capacity $c(u,v) - b(u,v)$. Now assume initially, at vertex $u$, the sum of capacities of edges into $u$ minus the sum of capacities out of $u$ is $M$. If $M > 0$, add an edge from super source $S$ to $u$ with capacity $M$. If $M < 0$, add an edge from $u$ to the super sink $T$ with capacity $-M$.
+
+\textbf{Variant 2}: Feasible flow with sources and sinks: Add an edge from original sink $t$ to source $s$ with capacity $+\infty$.
+
+\textbf{Variant 3}: Maximum flow with sources and sinks: first, check if there exists a feasible flow. Then augment using source $s$ and sink $t$ (i.e. run Dinic again with source $s$ and sink $t$).
+
+\textbf{Variant 4}: Minimum flow with sources and sinks: find the feasible flow first, remove the edge from sink to source (the current flow on the edge is the size of the original flow), and then run the maximum flow from the sink $t$ to the source $s$ to see how much we may get rid off from the original flow.
+
+\emph{Pick's Theorem}: Suppose a polygon has integer coordinates for all of its vertices; let $i$ be the number of integer points that are interior to the polyon, $b$ be the number of integer points on its boundary, the area of the polygon is
+\begin{equation*}
+  A = i + \frac{b}{2}-1.
+\end{equation*}
+
+\emph{Mobius Transformation/Circle Inversion}: Mobius transformations $f: \hat{\mathbb{C}} \rightarrow \hat{\mathbb{C}}$ are specified by $f(z) = \frac{az+b}{cz+d}$.
+
+\emph{Dilworth's Theorem}: For a partially ordered set $S$, the maximum size of an antichan (i.e. a subset of $S$ such that any two elements of the subset are not comparable under the partial ordering) is equal to the minimum number of chains (i.e. any two elements are comparable) required to cover $S$.
+
+\emph{LP Duality}: Suppose the primal linear program is given by maximize $\mathbf{c}^\top \mathbf{x}$ subject to $A\mathbf{x} \leq \mathbf{b}, \mathbf{x} \geq 0$, the dual progarm is given by minimize $\mathbf{b}^\top \mathbf{y}$ subject to $A^\top \mathbf{y} \geq \mathbf{c}, \mathbf{y} \geq 0$.
+
+\emph{Mobius Inversion}: If $g,f$ are arithmetic functions satisfying $\displaystyle g(n) = \sum_{d | n}f(d)$ for $n \geq 1$, then $\displaystyle f(n) = \sum_{d|n}\mu(d)g(\frac{n}{d})$.
+
+\textbf{Number of Points on Lattice Convex Polygon}: A convex lattice polygon with coordinates in $[0,N]$ has at most $O(N^{2/3})$ points.
+
+\textbf{Green's Theorem}: Let $C$ be a positively oriented, smooth, simple closed curve and let $D$ be the region bounded by $C$. If $L$ and $M$ are functions of $(x,y)$ defined on an open region containing $D$ and having continuous partial derivatives, then
+\begin{equation*}
+  \int_C (Ldx + Mdy) = \int_D(\frac{\partial M}{\partial x}-\frac{\partial L}{\partial y}) dxdy.
+\end{equation*}
+
+\textbf{Polynomial Division}: Suppose we are given polynomials $f(x), g(x)$, and we want to write $f(x)$ as $f(x) = Q(x)g(x) + R(x)$. Let $f^R(x) = x^{\deg f}f(\frac{1}{x})$ (i.e. reverse the coefficients of the polynomial). Let $n = \deg f, m = \deg g$. Then
+\begin{equation*}
+  f^R(x) \equiv Q^R(x) g^R(x) \mod x^{n-m+1}/
+\end{equation*}

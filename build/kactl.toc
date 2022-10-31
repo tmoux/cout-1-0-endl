@@ -1,0 +1,3 @@
+\contentsline {chapter}{\numberline {1}Templates}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Math Hints}{23}{chapter.2}%
+\contentsfinish 
