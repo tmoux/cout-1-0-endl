@@ -8,17 +8,12 @@
 
 \emph{Quadratic Residue}: $\left(\frac{a}{p} \right) = a^{(p-1)/2}$. If $x^2 \equiv a (\bmod p)$ has a solution, then $\left(\frac{a}{p} \right) = 1$.
 
-\emph{LGV Lemma}: Assume $G$ is a DAG. Let $\omega(P)$ be the product of edge weights on path $P$. Let $e(u,v) := \sum_{P: u \rightarrow v} \omega(P)$ be the sum of $\omega(P)$ for all paths from $u$ to $v$. The set of sources $A$ is a subset of vertices of $G$ with size $n$. The set of sinks $B$ is also a subset of vertices of $G$ with size $n$. A collection of disjoint paths $A \rightarrow B$ consists of $n$ paths $S_i$ such that $S_i$ is a path from $A_i$ to $B_{\sigma(S)_i}$ such that for any $i \neq j$, $S_i$ and $S_j$ does not share a common vertex. Then if we let
+\emph{LGV Lemma}: Assume $G = (V,E)$ is a DAG. Let $\omega(P)$ be the product of edge weights on path $P$. Let $e(u,v) := \sum_{P: u \rightarrow v} \omega(P)$ be the sum of $\omega(P)$ for all paths from $u$ to $v$. The set of sources $A \subseteq V$ and set of sinks $B \subseteq V$. A collection of disjoint paths $A \rightarrow B$ consists of $n$ paths $S_i$ such that $S_i$ is a path from $A_i$ to $B_{\sigma(S)_i}$ such that for any $i \neq j$, $S_i$ and $S_j$ does not share a common vertex. Then if we let
 \begin{equation*}
-  M = \begin{bmatrix} e(A_1,B_1) & e(A_1,B_2) & \cdots & e(A_1,B_n) \\ e(A_2,B_1) & e(A_2,B_2) & \cdots & e(A_2,B_n) \\ \vdots & \vdots & \ddots & \vdots \\ e(A_n,B_1) & e(A_n,B_2) & \cdots & e(A_n,B_n) \end{bmatrix},
+  M = \begin{bmatrix} e(A_1,B_1) & e(A_1,B_2) & \cdots  e(A_1,B_n)\\ \vdots & \vdots & \ddots & \vdots \\ e(A_n,B_1) & e(A_n,B_2) & \cdots & e(A_n,B_n) \end{bmatrix},
 \end{equation*}
-
-then
-\begin{equation*}
-  \det M = \sum_{S: A \rightarrow B}\text{ sgn } \sigma(S) \prod_{i=1}^n \omega(S_i).
-\end{equation*}
-
-Here, $S: A \rightarrow B$ denotes a set of disjoint paths $S$ from $A$ to $B$.
+then $\det M = \sum_{S: A \rightarrow B}\text{ sgn } \sigma(S) \prod_{i=1}^n \omega(S_i)$
+where $S: A \rightarrow B$ denotes a set of disjoint paths $S$ from $A$ to $B$.
 
 \emph{Network Flow with Lower/Upper Bounds}: Suppose the flow must satisfy $b(u,v) \leq f(u,v) \leq c(u,v)$, and have conservation of flows over vertices.
 
@@ -30,14 +25,11 @@ Here, $S: A \rightarrow B$ denotes a set of disjoint paths $S$ from $A$ to $B$.
 
 \textbf{Variant 4}: Minimum flow with sources and sinks: find the feasible flow first, remove the edge from sink to source (the current flow on the edge is the size of the original flow), and then run the maximum flow from the sink $t$ to the source $s$ to see how much we may get rid off from the original flow.
 
-\emph{Pick's Theorem}: Suppose a polygon has integer coordinates for all of its vertices; let $i$ be the number of integer points that are interior to the polyon, $b$ be the number of integer points on its boundary, the area of the polygon is
-\begin{equation*}
-  A = i + \frac{b}{2}-1.
-\end{equation*}
+\emph{Pick's Theorem}: Suppose a polygon has integer coordinates for all of its vertices; let $i$ be the number of integer points that are interior to the polyon, $b$ be the number of integer points on its boundary, the area of the polygon is $A = i + \frac{b}{2}-1$.
 
 \emph{Mobius Transformation/Circle Inversion}: Mobius transformations $f: \hat{\mathbb{C}} \rightarrow \hat{\mathbb{C}}$ are specified by $f(z) = \frac{az+b}{cz+d}$.
 
-\emph{Dilworth's Theorem}: For a partially ordered set $S$, the maximum size of an antichan (i.e. a subset of $S$ such that any two elements of the subset are not comparable under the partial ordering) is equal to the minimum number of chains (i.e. any two elements are comparable) required to cover $S$.
+\emph{Dilworth's Theorem}: For a partially ordered set $S$, the maximum size of an antichain is equal to the minimum number of chains (i.e. any two elements are comparable) required to cover $S$.
 
 \emph{LP Duality}: Suppose the primal linear program is given by maximize $\mathbf{c}^\top \mathbf{x}$ subject to $A\mathbf{x} \leq \mathbf{b}, \mathbf{x} \geq 0$, the dual progarm is given by minimize $\mathbf{b}^\top \mathbf{y}$ subject to $A^\top \mathbf{y} \geq \mathbf{c}, \mathbf{y} \geq 0$.
 
