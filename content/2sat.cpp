@@ -32,7 +32,7 @@ struct TwoSat {
 	void atMostOne(const vi& li) { // (optional)
 		if (sz(li) <= 1) return;
 		int cur = ~li[0];
-		rep(i,2,sz(li)) {
+		FOR(i,2,sz(li)) {
 			int next = addVar();
 			either(cur, ~li[i]);
 			either(cur, next);
@@ -59,8 +59,8 @@ struct TwoSat {
 	bool solve() {
 		values.assign(N, -1);
 		val.assign(2*N, 0); comp = val;
-		rep(i,0,2*N) if (!comp[i]) dfs(i);
-		rep(i,0,N) if (comp[2*i] == comp[2*i+1]) return 0;
+		FOR(i,0,2*N) if (!comp[i]) dfs(i);
+		FOR(i,0,N) if (comp[2*i] == comp[2*i+1]) return 0;
 		return 1;
 	}
 };

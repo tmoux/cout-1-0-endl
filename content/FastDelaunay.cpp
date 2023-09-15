@@ -21,7 +21,7 @@ bool circ(P p, P a, P b, P c) { // is p in the circumcircle?
 Q makeEdge(P orig, P dest) {
 	Q q[] = {new Quad{0,0,0,orig}, new Quad{0,0,0,arb},
 	         new Quad{0,0,0,dest}, new Quad{0,0,0,arb}};
-	rep(i,0,4)
+	FOR(i,0,4)
 		q[i]->o = q[-i & 3], q[i]->rot = q[(i+1) & 3];
 	return *q;
 }
