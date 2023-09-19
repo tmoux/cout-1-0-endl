@@ -64,15 +64,15 @@ void aug(int s){
     }
   }
 }
-//the graph is stored as e[N] and g[N]
-for (int i = 0; i < n; i++) match[i] = -1;
-for (int i = 0; i < n; i++) if (match[i] == -1) aug(i);
-int tot = 0;
-for (int i = 0; i < n; i++){
-  if (match[i] != -1) tot++;
-}
-//matched pairs = tot/2
-printf("%d\n", tot/2);
-for (int i = 0; i < n; i++){
-    printf("%d ", match[i] + 1);
-}
+// the graph is stored as e[N] and g[N]
+// for (int i = 0; i < n; i++) match[i] = -1;
+// for (int i = 0; i < n; i++) if (match[i] == -1) aug(i);
+// int tot = 0;
+// for (int i = 0; i < n; i++){
+//   if (match[i] != -1) tot++;
+// }
+// //matched pairs = tot/2
+// printf("%d\n", tot/2);
+// for (int i = 0; i < n; i++){
+//     printf("%d ", match[i] + 1);
+// }

@@ -1,34 +1,28 @@
-#include <set>
-#include <cstdio>
-#include <cstring>
-#include <algorithm>
-
-using namespace std;
-
-//you need twice the length of original string here, since you need space for adding $
-const int maxn = 2100000;
-
-char str[maxn], str2[maxn];
-//p[i] is just "how long you can extend from i in both ways"
-int p[maxn];
-
-void manacher(int n)
-{
-    int mx = 0;
-    int id = 0;
-    for (int i = 1;i <= n;++i){
-        if (mx >= i){
-            p[i] = min(mx - i, p[2 * id - i]);
-        }
-        else{
-            p[i] = 0;
-        }
-        for (;str[i + p[i] + 1] == str[i - p[i] - 1];){
-            p[i]++;
-        }
-        if (p[i] + i > mx){
-            id = i;
-            mx = p[i] + i;
-        }
+vector<int> manacher_odd(string s) {
+  int n = s.size();
+  s = "$" + s + "^";
+  vector<int> p(n + 2);
+  int l = 1, r = 1;
+  for(int i = 1; i <= n; i++) {
+    p[i] = max(0, min(r - i, p[l + (r - i)]));
+    while(s[i - p[i]] == s[i + p[i]]) {
+      p[i]++;
     }
+    if(i + p[i] > r) {
+      l = i - p[i], r = i + p[i];
+    }
+  }
+  return vector<int>(begin(p) + 1, end(p) - 1);
 }
+
+vector<int> manacher(string s) {
+  string t;
+  for(auto c: s) {
+    t += string("#") + c;
+  }
+  auto res = manacher_odd(t + "#");
+  for (auto& x: res) x--;
+  return vector<int>(begin(res) + 1, end(res) - 1);
+}
+// returns array P of length 2N-1, p[i] = length of longest odd/even palindrome
+// abcbcba: 1 0 1 0 3 0 7 0 3 0 1 0 1
