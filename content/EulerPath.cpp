@@ -19,7 +19,7 @@ vpi eulerPath(int r) {
             s.pb(*it);
             used[it->s] = 1;
         }
-    }
+    } // Returns path in reverse order if graph is directed.
     if (sz(ans) != M+1) return {};
     return ans;
 }
