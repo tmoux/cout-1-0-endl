@@ -21,10 +21,7 @@ void insertVector(ll mask) {
 bool inSpan(ll mask) {
 	for (int i = 0; i < D; i++) {
 		if ((mask & 1ll << i) == 0) continue;
-		if (!basis[i]) {
-            return true;
-		}
 		mask ^= basis[i];
 	}
-    return false;
+  return mask == 0;
 }
