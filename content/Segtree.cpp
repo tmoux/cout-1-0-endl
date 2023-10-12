@@ -1,7 +1,9 @@
-ll SZ = 262144; //set this to power of two
-ll* seg = new ll[2*SZ]; //segtree implementation by bqi343's Github
+const ll SZ = 262144; //set this to power of two
+ll seg[2*SZ];
 
 ll combine(ll a, ll b) { return max(a, b); }
+
+void build() { F0Rd(i,SZ) seg[i] = combine(seg[2*i],seg[2*i+1]); }
 
 void update(int p, ll value) {  
     for (seg[p += SZ] = value; p > 1; p >>= 1)
