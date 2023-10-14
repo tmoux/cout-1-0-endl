@@ -1,37 +1,41 @@
-int n; // number of nodes
-vector<vector<int>> adj; // adjacency list of graph
+int N;
+vector<vi> graph;
 
-vector<bool> visited;
-vector<int> tin, low; 
-int timer;
+vector<bool> vis;
+vi tin, low; 
+int ct;
+
+void mark_cp(int v) {
+    // TODO: mark v as cutpoint somehow
+}
 
 void dfs(int v, int p = -1) {
-    visited[v] = true;
-    tin[v] = low[v] = timer++;
-    int children=0;
-    for (int to : adj[v]) {
+    vis[v] = true;
+    tin[v] = low[v] = ct++;
+    int ch=0;
+    trav(to, graph[v]) {
         if (to == p) continue;
-        if (visited[to]) {
+        if (vis[to]) {
             low[v] = min(low[v], tin[to]);
         } else {
             dfs(to, v);
             low[v] = min(low[v], low[to]);
             if (low[to] >= tin[v] && p!=-1)
-                IS_CUTPOINT(v);
-            ++children;
+                mark_cp(v);
+            ++ch;
         }
     }
-    if(p == -1 && children > 1)
-        IS_CUTPOINT(v);
+    if(p == -1 && ch > 1)
+        mark_cp(v);
 }
 
 void find_cutpoints() {
-    timer = 0;
-    visited.assign(n, false);
-    tin.assign(n, -1);
-    low.assign(n, -1);
-    for (int i = 0; i < n; ++i) {
-        if (!visited[i])
-            dfs (i);
+    ct = 0;
+    vis.assign(N, false);
+    tin.assign(N, -1);
+    low.assign(N, -1);
+    for (int i = 0; i < N; ++i) {
+        if (!vis[i])
+            dfs(i);
     }
 }
