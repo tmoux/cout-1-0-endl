@@ -12,7 +12,7 @@
 	* https://cs.stanford.edu/group/acm/SLPC/notebook.pdf
 	* https://www.utdallas.edu/~scniu/OPRE-6201/documents/LP06-Simplex-Tableau.pdf (good example)
 	* http://www.columbia.edu/~cs2035/courses/ieor3608.F05/bigm1.pdf
- * Verification: https://open.kattis.com/contests/ecna19open/problems/cheeseifyouplease
+  * verification: https://open.kattis.com/contests/ecna19open/problems/cheeseifyouplease
  * ICPC WF16I, solves 200 systems of size up to 100 in 450ms
  */
 
