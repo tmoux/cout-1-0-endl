@@ -1,50 +1,47 @@
 const int L; //SET THIS TO CEIL(LOG(MX_N))
 int N;
 int anc[MX][L];
-int depth[MX];
-int parent[MX];
+int dep[MX];
 vector<vi> graph(MX);
 
-int LCA(int a, int b) {
-    if (depth[a] < depth[b]) {
-        int c = b;
-        b = a;
-        a = c;
-    }
-
-    int dist = depth[a] - depth[b];
-    while (dist > 0) {
-        F0R(i, L) {
-            if (dist & 1 << i) {
-                a = anc[a][i];
-                dist -= 1 << i;
-            }
+int jmp(int x, int d) {
+    F0R(i, L) {
+        if (d&(1<<i)) {
+            x = anc[x][i];
         }
     }
+    return x;
+}
 
+int lca(int a, int b) {
+    if (dep[a] < dep[b]) {
+        swap(a, b);
+    }
+
+    a = jmp(a, dep[a] - dep[b]);
     if (a == b) return a;
-
-    F0Rd(j, L) {
-        if (anc[a][j] != -1 && anc[a][j] != anc[b][j]) {
-            a = anc[a][j]; b = anc[b][j];
+    F0Rd(i, L) {
+        if (anc[a][i] != anc[b][i]) {
+            a = anc[a][i];
+            b = anc[b][i];
         }
     }
-    return parent[a];
+    return anc[a][0];
 }
 
-void parDFS(int v, int p, int d) {
-    parent[v] = p; depth[v] = d;
-    F0R(i, sz(graph[v])) {
-        int nxt = graph[v][i];
-        if (nxt == p) continue;
-        parDFS(nxt, v, d+1);
+void dfs(int v, int p) {
+    anc[v][0] = p; 
+    trav(a, graph[v]) {
+        if (a == p) continue;
+        dep[a] = dep[v] + 1;
+        dfs(a, v);
     }
 }
 
-void preprocess() {
-    parDFS(0, -1, 0);
+void prep() {
     F0R(i, N) F0R(j, L) anc[i][j] = -1;
-    F0R(i, N) anc[i][0] = parent[i];
+    dep[0] = 0;
+    dfs(0, -1);
     FOR(j, 1, L) {
         F0R(i, N) {
             if (anc[i][j-1] != -1) {
