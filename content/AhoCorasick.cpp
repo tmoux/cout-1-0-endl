@@ -1,55 +1,57 @@
+// NOTE: val/num variables in v, cnt argument to add_string,
+// and dfs/compute methods may be unnecessary
 struct AhoCorasick {
     static const int K = 26;
 
-    struct Vertex {
-        int next[K];
+    struct V {
+        int nxt[K];
         bool leaf = false;
         int p = -1;
         char pch;
         int link = -1;
         int go[K];
-        ll value = -1;
+        ll val = -1;
         ll num = 0;
 
-        Vertex(int p=-1, char ch='$') : p(p), pch(ch) {
-            fill(begin(next), end(next), -1);
+        V(int p=-1, char ch='$') : p(p), pch(ch) {
+            fill(begin(nxt), end(nxt), -1);
             fill(begin(go), end(go), -1);
         }
     };
 
-    vector<Vertex> t;
+    vector<V> t;
 
     void init() {
-        Vertex v; t.pb(v);
+        V v; t.pb(v);
     }
 
-
-
-    void add_string(string const& s, int count) {
+    void add_string(string const& s, int cnt) {
         int v = 0;
-        for (char ch : s) {
+        trav(ch, s) {
             int c = ch - 'a';
-            if (t[v].next[c] == -1) {
-                t[v].next[c] = t.size();
+            if (t[v].nxt[c] == -1) {
+                t[v].nxt[c] = t.size();
                 t.emplace_back(v, ch);
             }
-            v = t[v].next[c];
+            v = t[v].nxt[c];
         }
         t[v].leaf = true;
-        t[v].num = count;
+        t[v].num = cnt;
     }
 
     ll dfs(int v) {
-        if (t[v].value != -1) {
-            return t[v].value;
+        if (t[v].val != -1) {
+            return t[v].val;
         }
         ll ans = t[v].num;
-        ans += dfs(get_link(v)); // is this right?
-        return t[v].value = ans;
+        ans += dfs(get_link(v));
+        return t[v].val = ans;
     }
 
+    // sets value for each node to sum of values
+    // over suffix links
     void compute() {
-        t[0].value = 0;
+        t[0].val = 0;
         FOR(i, 1, sz(t)) {
             dfs(i);
         }
@@ -68,8 +70,8 @@ struct AhoCorasick {
     int go(int v, char ch) {
         int c = ch - 'a';
         if (t[v].go[c] == -1) {
-            if (t[v].next[c] != -1)
-                t[v].go[c] = t[v].next[c];
+            if (t[v].nxt[c] != -1)
+                t[v].go[c] = t[v].nxt[c];
             else
                 t[v].go[c] = v == 0 ? 0 : go(get_link(v), ch);
         }
