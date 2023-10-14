@@ -1,3 +1,6 @@
+// WARNING: May include multiple copies of the same point if duplicates are included in input
+// Returns convex hull in clockwise order
+
 struct pt {
     ld x, y;
 };
@@ -15,30 +18,30 @@ bool ccw(pt a, pt b, pt c) {
 }
 
 void convex_hull(vector<pt>& a) {
-    if (a.size() == 1)
+    if (sz(a) == 1)
         return;
 
-    sort(a.begin(), a.end(), &cmp);
+    sort(all(a), &cmp);
     pt p1 = a[0], p2 = a.back();
     vector<pt> up, down;
-    up.push_back(p1);
-    down.push_back(p1);
-    for (int i = 1; i < (int)a.size(); i++) {
-        if (i == a.size() - 1 || cw(p1, a[i], p2)) {
-            while (up.size() >= 2 && !cw(up[up.size()-2], up[up.size()-1], a[i]))
+    up.pb(p1);
+    down.pb(p1);
+    FOR(i, 1, sz(a)) {
+        if (i == sz(a) - 1 || cw(p1, a[i], p2)) {
+            while (sz(up) >= 2 && !cw(up[sz(up)-2], up[sz(up)-1], a[i]))
                 up.pop_back();
-            up.push_back(a[i]);
+            up.pb(a[i]);
         }
-        if (i == a.size() - 1 || ccw(p1, a[i], p2)) {
-            while(down.size() >= 2 && !ccw(down[down.size()-2], down[down.size()-1], a[i]))
+        if (i == sz(a) - 1 || ccw(p1, a[i], p2)) {
+            while(sz(down) >= 2 && !ccw(down[sz(down)-2], down[sz(down)-1], a[i]))
                 down.pop_back();
-            down.push_back(a[i]);
+            down.pb(a[i]);
         }
     }
 
     a.clear();
-    for (int i = 0; i < (int)up.size(); i++)
+    for (int i = 0; i < sz(up); i++)
         a.push_back(up[i]);
-    for (int i = down.size() - 2; i > 0; i--)
+    for (int i = sz(down) - 2; i > 0; i--)
         a.push_back(down[i]);
 }
