@@ -9,3 +9,5 @@ imap jk         <Esc>
 " Useful for verifying that there aren't mistypes.
 ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \
  \| md5sum \| cut -c-6
+
+autocmd filetype cpp nnoremap <F9> :w <bar> !build.sh %:r <CR>
