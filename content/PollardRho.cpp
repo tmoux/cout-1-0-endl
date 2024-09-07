@@ -22,6 +22,9 @@ bool prime_test(ll p){
         if (p == tests[i]){
             return true;
         }
+        // quickpow2 is quickpow where modulus is in long long
+        // This means we should replace regular multiplication with 
+        // quickmult inside quickpow2
         ll x = quickpow2(tests[i], d, p);
         for (int j = 1;j <= r;j++){
             ll y = quickmult(x, x, p);

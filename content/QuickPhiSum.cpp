@@ -1,17 +1,10 @@
-/*
-This algorithm concerns efficient evaluation of sum of number theoric functions like phi or mu.
-We know that using Eulerian sieve, we can only archieve O(n) time complexity.
-What we are doing is to archieve O(n^{2/3}) time complexity.
-The example program shows how to evaluate sum of phi and sum of mu efficientyl.
-For smaller n (n less than (N^{2/3}), we use calculate them as usual.
-For larger n, see getphi and getmu
-*/
-
-//See Sieve for more technical details.
-//When i is prime, phi[i] = i-1;mu[i] = -1; Otherwise, inside the inner loop, let p = primes[j].
-//Then it follows phi[p*i] = phi[i] * (p-1); mu[p*i] = -mu[i];
-//finally, when i % p == 0, phi[p*i] = phi[i]*p and mu[p*i] = 0;
-
+// This algorithm concerns efficient evaluation of sum of number theoric functions like phi or mu.
+// We know that using Eulerian sieve, we can only archieve O(n) time complexity.
+// What we are doing is to archieve O(n^{2/3}) time complexity.
+// The example program shows how to evaluate sum of phi and sum of mu efficiently.
+// For smaller n (n less than (N^{2/3}), we use calculate them as usual.
+// For larger n, use getphi
+// phi_cheat is a lookup table for getphi(n) that has been computed for "large" n
 ll getphi(ll n)
 {
   if (n <= m) return phi[n];
