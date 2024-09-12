@@ -33,10 +33,11 @@ ll query(int lo = 0, int hi = SZ-1, int index = 1, ll L = 0, ll R = SZ-1) { //re
         return (condition ? L : -1);
     }
     int M = (L+R) / 2;
-    if (checkCondition(2*index)) {
-        return query(lo, hi, 2*index, L, M);
+    push(2*index+1);
+    if (checkCondition(2*index+1)) {
+        return query(lo, hi, 2*index+1, M+1, R);
     }
-    return query(lo, hi, 2*index+1, M+1, R); 
+    return query(lo, hi, 2*index, L, M); 
 }
 
 void update(int lo, int hi, ll increase, int index = 1, ll L = 0, ll R = SZ-1) {
